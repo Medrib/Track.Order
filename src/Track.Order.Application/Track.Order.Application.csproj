@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Track.Order.Api.Contracts\Track.Order.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Track.Order.Common\Track.Order.Common.csproj" />
+    <ProjectReference Include="..\Track.Order.Domain\Track.Order.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
