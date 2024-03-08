@@ -6,18 +6,23 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2281DED1-ADB3-4F0B-B88D-675918A41CA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5ECA726-97EE-4F62-B787-260ED073B6F9}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Api", "src\Track.Order.Api\Track.Order.Api.csproj", "{F59A3E8F-7F8B-4F79-B2CB-1D6426CC9244}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Api", "src\Track.Order.Api\Track.Order.Api.csproj", "{F59A3E8F-7F8B-4F79-B2CB-1D6426CC9244}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Api.Contracts", "src\Track.Order.Api.Contracts\Track.Order.Api.Contracts.csproj", "{C201C917-F00E-4F47-B164-41DC43BA3EFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Api.Contracts", "src\Track.Order.Api.Contracts\Track.Order.Api.Contracts.csproj", "{C201C917-F00E-4F47-B164-41DC43BA3EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Application", "src\Track.Order.Application\Track.Order.Application.csproj", "{FBD4DF4C-0F70-4B64-9089-A580C1DD3DF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Application", "src\Track.Order.Application\Track.Order.Application.csproj", "{FBD4DF4C-0F70-4B64-9089-A580C1DD3DF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Infrastructure", "src\Track.Order.Infrastructure\Track.Order.Infrastructure.csproj", "{394ED981-88B0-4268-8AE7-2779F1B3027B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Infrastructure", "src\Track.Order.Infrastructure\Track.Order.Infrastructure.csproj", "{394ED981-88B0-4268-8AE7-2779F1B3027B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Domain", "src\Track.Order.Domain\Track.Order.Domain.csproj", "{962A7265-95F0-46B5-B2FD-973507CBCD79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Domain", "src\Track.Order.Domain\Track.Order.Domain.csproj", "{962A7265-95F0-46B5-B2FD-973507CBCD79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Track.Order.Common", "src\Track.Order.Common\Track.Order.Common.csproj", "{6AF38DC9-C282-4E99-A987-142D1BDE6E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Track.Order.Common", "src\Track.Order.Common\Track.Order.Common.csproj", "{6AF38DC9-C282-4E99-A987-142D1BDE6E86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

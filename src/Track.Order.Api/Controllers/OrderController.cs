@@ -20,14 +20,14 @@ public class OrderController : Controller
         _mapper = mapper;
     }
 
-    [HttpGet("{orderId}")]
+    [HttpGet("{id}")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetOrderByIdAsync([FromRoute] int orderId)
+    public async Task<IActionResult> GetOrderByIdAsync([FromRoute] int id)
     {
-        var serviceResult = await _orderService.GetOrderByIdAsync(orderId);
+        var serviceResult = await _orderService.GetOrderByIdAsync(id);
 
         if (serviceResult.IsFailure)
             return serviceResult.BuildErrorResult();

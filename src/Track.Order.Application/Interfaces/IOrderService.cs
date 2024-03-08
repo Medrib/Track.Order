@@ -4,5 +4,5 @@ namespace Track.Order.Application.Interfaces;
 
 public interface IOrderService
 {
-    Task<IturriResult> GetOrderByIdAsync(int orderId);
+    Task<IturriResult> GetOrderByIdAsync(int id);
 }

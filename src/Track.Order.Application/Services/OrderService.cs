@@ -12,9 +12,9 @@ public class OrderService : IOrderService
         _orderRepository = orderRepository;
     }
 
-    public async Task<IturriResult> GetOrderByIdAsync(int orderId)
+    public async Task<IturriResult> GetOrderByIdAsync(int id)
     {
-        var order = await _orderRepository.GetByIdAsync(orderId);
+        var order = await _orderRepository.GetByIdAsync(id);
 
         if (order is null)
             return IturriResult.Fail(new Common.Errors.IturriError(null, "order_not_found", System.Net.HttpStatusCode.NotFound));
