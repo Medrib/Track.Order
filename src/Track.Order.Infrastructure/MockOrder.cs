@@ -13,31 +13,62 @@ public static class MockOrder
     public static List<Order> GetAllAsync()
         => new List<Order>()
         {
-            new()
+ new()
             {
                 Id = 1,
-                Name = "track-order-1",
+                FechaDeCreacion = "13/05",
+                Estado = "facturado",
+                NoMaterial= "4005478550-400",
+                Cliente = "123",
+                Empleado ="lalala",
+                Lote = "123",
+                NoPedido ="lalal"
+
             },
             new()
             {
-                Id = 2,
-                Name = "track-order-2",
+                Id= 2,
+                FechaDeCreacion = "12/05",
+                Estado = "finalizado",
+                NoMaterial= "4005478550-500",
+                Cliente = "123",
+                Empleado =" ",
+                Lote = "123",
+                 NoPedido ="lalal"
             },
             new()
-            {
-                Id = 3,
-                Name = "track-order-3",
+            {   Id= 3,
+                FechaDeCreacion = "12/06",
+                Estado = "facturado",
+                NoMaterial= "4005478550-600",
+                Cliente = "123",
+                Empleado ="  ",
+                Lote = "123",
+                NoPedido ="lalal"
             },
             new()
             {
                 Id = 4,
-                Name = "track-order-3",
+                FechaDeCreacion = "12/07",
+                Estado = "cancelado",
+                NoMaterial= "4005478550-700",
+                Cliente = "123",
+                Empleado =" ",
+                Lote = "123",
+                NoPedido ="lalal"
             },
             new()
             {
-                Id = 5,
-                Name = "track-order-4",
+                 Id = 5,
+                FechaDeCreacion = "12/08",
+                Estado = "pendiente",
+                NoMaterial= "4005478550-800",
+                Cliente = "123",
+                Empleado =" ",
+                Lote = "123",
+                NoPedido ="lalal"
             },
         };
 
 }
+

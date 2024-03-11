@@ -21,4 +21,14 @@ public class OrderService : IOrderService
 
         return IturriResult.Success(order);
     }
+    public async Task<IturriResult> GetAllOrderAsync()
+    {
+        var order = await _orderRepository.GetAllAsync();
+
+        if (order is null)
+            return IturriResult.Fail(new Common.Errors.IturriError(null, "order_not_found", System.Net.HttpStatusCode.NotFound));
+
+        return IturriResult.Success(order);
+    }
+
 }

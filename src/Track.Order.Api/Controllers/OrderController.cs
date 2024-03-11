@@ -35,4 +35,23 @@ public class OrderController : Controller
         var result = IturriResult.Success(_mapper.Map<OrderResponse>(serviceResult.Data));
         return result.BuildResult<OrderResponse>();
     }
+
+    [HttpGet()]
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetAllOrderAsync()
+    {
+        var serviceResult = await _orderService.GetAllOrderAsync();
+
+        if (serviceResult.IsFailure)
+            return serviceResult.BuildErrorResult();
+
+        var orderResponses = _mapper.Map<List<OrderResponse>>(serviceResult.Data);
+
+        var result = IturriResult.Success(orderResponses);
+        return result.BuildResult<List<OrderResponse>>(); ;
+    }
+
 }
