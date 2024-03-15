@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Track.Order.Api.Contracts.Order;
+using Track.Order.Api.Contracts.Order.SearchOrders;
 using Track.Order.Application.Interfaces;
 using Track.Order.Common;
 using Track.Order.Common.Models;
@@ -20,22 +21,6 @@ public class OrderController : Controller
         _mapper = mapper;
     }
 
-    [HttpGet("{id}")]
-    [Produces("application/json")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetOrderByIdAsync([FromRoute] int id)
-    {
-        var serviceResult = await _orderService.GetOrderByIdAsync(id);
-
-        if (serviceResult.IsFailure)
-            return serviceResult.BuildErrorResult();
-
-        var result = IturriResult.Success(_mapper.Map<OrderResponse>(serviceResult.Data));
-        return result.BuildResult<OrderResponse>();
-    }
-
     [HttpGet()]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -48,10 +33,22 @@ public class OrderController : Controller
         if (serviceResult.IsFailure)
             return serviceResult.BuildErrorResult();
 
-        var orderResponses = _mapper.Map<List<OrderResponse>>(serviceResult.Data);
+        return Ok(serviceResult.Data);
+    }
+    [HttpGet("search")]
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        var result = IturriResult.Success(orderResponses);
-        return result.BuildResult<List<OrderResponse>>(); ;
+    public async Task<IActionResult> SearchOrdersAsync([FromQuery] Filters filters)
+    {
+        var serviceResult = await _orderService.SearchOrdersAsync(filters);
+
+        if (serviceResult.IsFailure)
+            return serviceResult.BuildErrorResult();
+
+        return Ok(serviceResult.Data);
     }
 
 }

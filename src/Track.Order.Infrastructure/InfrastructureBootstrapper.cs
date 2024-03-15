@@ -11,11 +11,11 @@ public static class InfrastructureBootstrapper
     public static IServiceCollection RegisterInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         // Database
-        var connectionString = configuration.GetConnectionString("PostgreSQL");
+        var connectionString = configuration.GetConnectionString("SqlServerConnection");
 
         services.AddDbContext<TrackOrderDbContext>(options
             => options
-            .UseNpgsql(connectionString));
+            .UseSqlServer(connectionString));
 
         // Repositories
         services.AddScoped<IOrderRepository, OrderRepository>();

@@ -1,6 +1,7 @@
 ﻿namespace Track.Order.Infrastructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using Track.Order.Application.Interfaces;
 
 public class BaseRepository<TEntity, TEntityId> : IBaseRespository<TEntity, TEntityId>
@@ -10,7 +11,7 @@ public class BaseRepository<TEntity, TEntityId> : IBaseRespository<TEntity, TEnt
     public BaseRepository(TrackOrderDbContext dbContext)
     => DbContext = dbContext;
 
-    protected TrackOrderDbContext DbContext {  get; }
+    protected TrackOrderDbContext DbContext { get; }
 
     public virtual async Task<TEntity?> GetByIdAsync(TEntityId id)
         => await DbContext.Set<TEntity>().FindAsync(id);
@@ -38,4 +39,31 @@ public class BaseRepository<TEntity, TEntityId> : IBaseRespository<TEntity, TEnt
         DbContext.Set<TEntity>().Remove(entity);
         await DbContext.SaveChangesAsync();
     }
+
+    public virtual async Task<IEnumerable<TEntity>> SearchAsync(
+        Expression<Func<TEntity, bool>>? filter = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        string includeProperties = "")
+    {
+        IQueryable<TEntity> query = DbContext.Set<TEntity>();
+
+        if (filter != null)
+            query = query.Where(filter);
+
+        foreach (var includeProperty in includeProperties.Split(
+            new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            query = query.Include(includeProperty);
+        }
+
+        if (orderBy != null)
+            return await orderBy(query).ToListAsync();
+        else
+            return await query.ToListAsync();
+    }
+
+
+
+
+
 }

@@ -1,23 +1,21 @@
 ﻿namespace Track.Order.Infrastructure.Repositories;
 
+using Microsoft.EntityFrameworkCore;
+using Track.Order.Api.Contracts.Order;
 using Track.Order.Application.Interfaces;
 using Track.Order.Domain.Entities;
 
-public class OrderRepository : BaseRepository<Order, int>, IOrderRepository
+public class OrderRepository : BaseRepository<Orders, int>, IOrderRepository
 {
+    private readonly TrackOrderDbContext _dbContext;
     public OrderRepository(TrackOrderDbContext context)
         : base(context)
     { }
 
-    public override Task<Order?> GetByIdAsync(int id)
+    public async Task<IReadOnlyList<Orders>> GetAllAsync()
     {
-        var order = MockOrder.GetByIdAsync(id);
-        return Task.FromResult<Order?>(order);
+        return await DbContext.Orders.ToListAsync();
     }
 
-    public override Task<IReadOnlyList<Order>> GetAllAsync()
-    {
-        var orders = MockOrder.GetAllAsync();
-        return Task.FromResult<IReadOnlyList<Order>>(orders);
-    }
+
 }
