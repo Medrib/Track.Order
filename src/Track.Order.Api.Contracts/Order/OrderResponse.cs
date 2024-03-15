@@ -10,4 +10,5 @@ public class OrderResponse
     public string Empleado { get; set; }
     public string Lote { get; set; }
     public string NoPedido { get; set; }
+
 }
